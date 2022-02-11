@@ -2,7 +2,6 @@ import pickle
 import streamlit as st
 import requests
 import pandas as pd
-import joblib as joblib
 
 def fetch_poster(movie_id):
     url = "https://api.themoviedb.org/3/movie/{}?api_key=e3a2c444f9664e7ae913b3a98a935c17".format(movie_id)
@@ -26,7 +25,7 @@ def recommend(movie):
     return recommended_movie_names,recommended_movie_posters
 
 
-movies = joblib.load(open('movie_dict.pkl','rb'))
+movies = pickle.load(open('movie_dict.pkl','rb'))
 movies = pd.DataFrame(movies)
 
 st.markdown("<h1 style='text-align: center; color: white;'>THE RECOMMENDER</h1>", unsafe_allow_html=True)
